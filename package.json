@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/dstratossong/echo-server#readme",
   "dependencies": {
+    "node-simple-router": "^0.10.0",
     "ws": "^1.0.1"
   }
 }

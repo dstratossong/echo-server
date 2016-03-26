@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Echo Server Client</title>
+  <style>
+    #echo-board {
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <pre id="echo-board"></pre>
+
+  <script>
+    function postMessage(m) {
+      var o = document.createElement("div");
+      o.innerHTML = m;
+      document.getElementById("echo-board").appendChild(o);
+    }
+
+    var connection = new WebSocket("ws://" + window.location.hostname + ":4011");
+
+    connection.onopen = function () {
+      postMessage("Connection opened.");
+    };
+    connection.onclose = function () {
+      postMessage("Connection closed.");
+    };
+    connection.onerror = function () {
+      postMessage("An error occured!");
+    };
+    connection.onmessage = function (event) {
+      postMessage(event.data);
+    };
+  </script>
+</body>
+</html>
