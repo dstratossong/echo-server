@@ -1,5 +1,5 @@
 var http = require('http');
-var url = require('url');
+// var url = require('url');
 
 var port = process.argv[2];
 
@@ -11,7 +11,7 @@ function writeResponse(response) {
 var server = http.createServer(function (request, response) {
 	console.log("Request: " + request.method);
 	console.log(request.headers);
-	
+
 	if (request.method == 'POST') {
 		request.on('data', function(chunk) {
 			console.log("Received body data:");
@@ -26,4 +26,3 @@ var server = http.createServer(function (request, response) {
 });
 
 server.listen(port);
-
