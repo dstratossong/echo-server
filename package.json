@@ -1,0 +1,22 @@
+{
+  "name": "echo-server",
+  "version": "1.0.0",
+  "description": "A simple echo server with a plain front end. To help with building web hooks. ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstratossong/echo-server.git"
+  },
+  "author": "David Song me@meetdavidsong.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dstratossong/echo-server/issues"
+  },
+  "homepage": "https://github.com/dstratossong/echo-server#readme",
+  "dependencies": {
+    "ws": "^1.0.1"
+  }
+}
