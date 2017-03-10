@@ -61,7 +61,7 @@ function writeBody(request, response) {
 		wss.broadcast(outStr);
 		console.log(outStr);
 
-    writeCORSHeader(response);
+    writeCORSHeader(request, response);
 		writeResponse(response);
 	});
 }
