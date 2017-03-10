@@ -29,13 +29,13 @@ http.createServer(function (request, response) {
 	writeMeta(request);
   
   if (request.method == 'OPTIONS') {
-    writeCORSHeader(response);
+    writeCORSHeader(request, response);
     response.end();
   } else if (request.method == 'POST') {
     writeBody(request, response);
   } else {
 		writeParams(request, response);
-    writeCORSHeader(response);
+    writeCORSHeader(request, response);
     writeResponse(response);
   }
 }).listen(echoPort);
@@ -80,9 +80,9 @@ function writeResponse(response) {
   response.end("");
 }
 
-function writeCORSHeader(response) {
-  response.setHeader('Access-Control-Allow-Origin', '*');
+function writeCORSHeader(request, response) {
+  response.setHeader('Access-Control-Allow-Origin', request.header.origin);
 	response.setHeader('Access-Control-Request-Method', '*');
 	response.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE');
-	response.setHeader('Access-Control-Allow-Headers', '*');
+	response.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
 }
