@@ -27,8 +27,11 @@ http.createServer(router)
 // --- echo ---
 http.createServer(function (request, response) {
 	writeMeta(request);
-
-  if (request.method == 'POST') {
+  
+  if (request.method == 'OPTIONS') {
+    writeCORSHeader(response);
+    response.end();
+  } else if (request.method == 'POST') {
     writeBody(request, response);
   } else {
 		writeParams(request, response);
