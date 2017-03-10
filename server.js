@@ -81,7 +81,7 @@ function writeResponse(response) {
 }
 
 function writeCORSHeader(request, response) {
-  response.setHeader('Access-Control-Allow-Origin', request.header.origin);
+  response.setHeader('Access-Control-Allow-Origin', request.headers.origin || "*");
 	response.setHeader('Access-Control-Request-Method', '*');
 	response.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE');
 	response.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
