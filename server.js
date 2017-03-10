@@ -32,6 +32,7 @@ http.createServer(function (request, response) {
     writeBody(request, response);
   } else {
 		writeParams(request, response);
+    writeCORSHeader(response);
     writeResponse(response);
   }
 }).listen(echoPort);
@@ -57,6 +58,7 @@ function writeBody(request, response) {
 		wss.broadcast(outStr);
 		console.log(outStr);
 
+    writeCORSHeader(response);
 		writeResponse(response);
 	});
 }
@@ -68,11 +70,16 @@ function writeParams(request, response) {
 
 	wss.broadcast(outStr);
 	console.log(outStr);
-
-	writeResponse(response);
 }
 
 function writeResponse(response) {
   response.writeHead(200, "OK", { 'Content-Type': 'text/html' });
   response.end("");
+}
+
+function writeCORSHeader(response) {
+  response.setHeader('Access-Control-Allow-Origin', '*');
+	response.setHeader('Access-Control-Request-Method', '*');
+	response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+	response.setHeader('Access-Control-Allow-Headers', '*');
 }
